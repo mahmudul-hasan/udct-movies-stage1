@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Pop Movies Stage1</string>
+    <string name="popularity">Popularity</string>
+    <string name="ratings">Top rated</string>
+    <string name="sort_movies">Sort By</string>
 </resources>
