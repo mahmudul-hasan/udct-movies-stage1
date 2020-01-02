@@ -9,12 +9,15 @@ import android.view.MenuItem;
 import com.mhasan.udct.popmoviesstage1.R;
 import com.mhasan.udct.popmoviesstage1.mainpage.presenter.MainPageContract;
 import com.mhasan.udct.popmoviesstage1.mainpage.presenter.MainPagePresenter;
+import com.mhasan.udct.popmoviesstage1.utils.UrlUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity implements MainPageContract.View {
+
+	private MainPageContract.Presenter mainPagePresenter;
 
 	@Override
 	public void initializeMovieGridViewsWith(List<String> imageList) {
@@ -28,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements MainPageContract.
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		new MainPagePresenter(this).initializeView();
+		mainPagePresenter = new MainPagePresenter(this);
 	}
 
 	@Override
@@ -40,6 +43,14 @@ public class MainActivity extends AppCompatActivity implements MainPageContract.
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		//TODO - handle menu item click
+		switch (item.getItemId()) {
+			case R.id.sortByPopularity:
+				mainPagePresenter.sortMoviesBy(UrlUtils.CATEGORY_POPULAR);
+				break;
+			case R.id.sortByTopRatings:
+				mainPagePresenter.sortMoviesBy(UrlUtils.CATEGORY_TOP_RATED);
+				break;
+		}
 		return super.onOptionsItemSelected(item);
 	}
 }
