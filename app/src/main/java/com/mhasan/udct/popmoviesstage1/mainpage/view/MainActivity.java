@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import com.mhasan.udct.popmoviesstage1.R;
 import com.mhasan.udct.popmoviesstage1.mainpage.presenter.MainPageContract;
 import com.mhasan.udct.popmoviesstage1.mainpage.presenter.MainPagePresenter;
+import com.mhasan.udct.popmoviesstage1.model.MovieResponse;
 import com.mhasan.udct.popmoviesstage1.utils.UrlUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,9 +21,9 @@ public class MainActivity extends AppCompatActivity implements MainPageContract.
 	private MainPageContract.Presenter mainPagePresenter;
 
 	@Override
-	public void initializeMovieGridViewsWith(List<String> imageList) {
+	public void initializeMovieGridViewsWith(List<String> imageList, MovieResponse movieResponse) {
 		RecyclerView gridViewRv = findViewById(R.id.movieGridViewRv);
-		MovieGridViewAdapter adapter = new MovieGridViewAdapter(this, imageList);
+		MovieGridViewAdapter adapter = new MovieGridViewAdapter(this, imageList, movieResponse);
 		gridViewRv.setLayoutManager(new GridLayoutManager(this, 2));
 		gridViewRv.setAdapter(adapter);
 	}

@@ -3,12 +3,16 @@ package com.mhasan.udct.popmoviesstage1.mainpage.view;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 import com.mhasan.udct.popmoviesstage1.R;
+import com.mhasan.udct.popmoviesstage1.detailspage.view.DetailsPageActivity;
+import com.mhasan.udct.popmoviesstage1.model.MovieResponse;
 import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
@@ -16,12 +20,15 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 
 public class MovieGridViewAdapter extends Adapter<MovieGridViewHolder> {
 
+	public static final String DATA_RETRIEVAL_KEY = "dataRetrievalKey";
 	private Context context;
 	private List<String> imageList;
+	private MovieResponse movieResponse;
 
-	public MovieGridViewAdapter(Context context, List<String> imageList) {
+	public MovieGridViewAdapter(Context context, List<String> imageList, MovieResponse movieResponse) {
 		this.context = context;
 		this.imageList = imageList;
+		this.movieResponse = movieResponse;
 	}
 
 	@Override
@@ -30,13 +37,17 @@ public class MovieGridViewAdapter extends Adapter<MovieGridViewHolder> {
 	}
 
 	@Override
-	public void onBindViewHolder(@NonNull MovieGridViewHolder holder, int position) {
+	public void onBindViewHolder(@NonNull MovieGridViewHolder holder, final int position) {
 		String imagePath = imageList.get(position);
 		Picasso.get().load(imagePath).resize(185, 277).centerCrop().into(holder.getImageView());
 		holder.getImageView().setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//TODO - handle cell click.
+				Intent intent = new Intent(context, DetailsPageActivity.class);
+				Bundle bundle = new Bundle();
+				bundle.putParcelable(DATA_RETRIEVAL_KEY, movieResponse.getResults().get(position));
+				intent.putExtras(bundle);
+				context.startActivity(intent);
 			}
 		});
 	}
