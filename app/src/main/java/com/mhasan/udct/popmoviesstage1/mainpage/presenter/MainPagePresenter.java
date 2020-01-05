@@ -18,6 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainPagePresenter implements MainPageContract.Presenter {
 
 	private List<String> imageUrlList = new ArrayList<>();
+	private MovieResponse movieResponse;
 	private String sortCategory = UrlUtils.CATEGORY_POPULAR;
 	private MainPageContract.View view;
 
@@ -28,7 +29,7 @@ public class MainPagePresenter implements MainPageContract.Presenter {
 
 	@Override
 	public void initializeView() {
-		view.initializeMovieGridViewsWith(imageUrlList);
+		view.initializeMovieGridViewsWith(imageUrlList, movieResponse);
 	}
 
 	@Override
@@ -48,7 +49,7 @@ public class MainPagePresenter implements MainPageContract.Presenter {
 
 			@Override
 			public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
-				MovieResponse movieResponse = response.body();
+				movieResponse = response.body();
 				imageUrlList = new DeriveImageUrlListFromMovieResponse().transform(movieResponse);
 				initializeView();
 			}

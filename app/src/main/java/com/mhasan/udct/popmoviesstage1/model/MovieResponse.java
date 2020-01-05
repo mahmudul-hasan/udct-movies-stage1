@@ -1,11 +1,25 @@
 package com.mhasan.udct.popmoviesstage1.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class MovieResponse {
+import android.os.Parcel;
 
-	public static class ResultsBean {
+public class MovieResponse implements android.os.Parcelable {
 
+	public static class ResultsBean implements android.os.Parcelable {
+
+		public static final Creator<ResultsBean> CREATOR = new Creator<ResultsBean>() {
+			@Override
+			public ResultsBean createFromParcel(Parcel source) {
+				return new ResultsBean(source);
+			}
+
+			@Override
+			public ResultsBean[] newArray(int size) {
+				return new ResultsBean[size];
+			}
+		};
 		private boolean adult;
 		private String backdrop_path;
 		private List<Integer> genre_ids;
@@ -37,6 +51,32 @@ public class MovieResponse {
 		private boolean video;
 		private double vote_average;
 		private int vote_count;
+
+		public ResultsBean() {
+		}
+
+		protected ResultsBean(Parcel in) {
+			this.adult = in.readByte() != 0;
+			this.backdrop_path = in.readString();
+			this.genre_ids = new ArrayList<Integer>();
+			in.readList(this.genre_ids, Integer.class.getClassLoader());
+			this.id = in.readInt();
+			this.original_language = in.readString();
+			this.original_title = in.readString();
+			this.overview = in.readString();
+			this.popularity = in.readDouble();
+			this.poster_path = in.readString();
+			this.release_date = in.readString();
+			this.title = in.readString();
+			this.video = in.readByte() != 0;
+			this.vote_average = in.readDouble();
+			this.vote_count = in.readInt();
+		}
+
+		@Override
+		public int describeContents() {
+			return 0;
+		}
 
 		public String getBackdrop_path() {
 			return backdrop_path;
@@ -149,8 +189,36 @@ public class MovieResponse {
 		public void setVote_count(int vote_count) {
 			this.vote_count = vote_count;
 		}
-	}
 
+		@Override
+		public void writeToParcel(Parcel dest, int flags) {
+			dest.writeByte(this.adult ? (byte) 1 : (byte) 0);
+			dest.writeString(this.backdrop_path);
+			dest.writeList(this.genre_ids);
+			dest.writeInt(this.id);
+			dest.writeString(this.original_language);
+			dest.writeString(this.original_title);
+			dest.writeString(this.overview);
+			dest.writeDouble(this.popularity);
+			dest.writeString(this.poster_path);
+			dest.writeString(this.release_date);
+			dest.writeString(this.title);
+			dest.writeByte(this.video ? (byte) 1 : (byte) 0);
+			dest.writeDouble(this.vote_average);
+			dest.writeInt(this.vote_count);
+		}
+	}
+	public static final Creator<MovieResponse> CREATOR = new Creator<MovieResponse>() {
+		@Override
+		public MovieResponse createFromParcel(Parcel source) {
+			return new MovieResponse(source);
+		}
+
+		@Override
+		public MovieResponse[] newArray(int size) {
+			return new MovieResponse[size];
+		}
+	};
 	/**
 	 * page : 1
 	 * total_results : 10000
@@ -162,6 +230,22 @@ public class MovieResponse {
 	private List<ResultsBean> results;
 	private int total_pages;
 	private int total_results;
+
+	public MovieResponse() {
+	}
+
+	protected MovieResponse(Parcel in) {
+		this.page = in.readInt();
+		this.results = new ArrayList<ResultsBean>();
+		in.readList(this.results, ResultsBean.class.getClassLoader());
+		this.total_pages = in.readInt();
+		this.total_results = in.readInt();
+	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
 
 	public int getPage() {
 		return page;
@@ -193,5 +277,13 @@ public class MovieResponse {
 
 	public void setTotal_results(int total_results) {
 		this.total_results = total_results;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(this.page);
+		dest.writeList(this.results);
+		dest.writeInt(this.total_pages);
+		dest.writeInt(this.total_results);
 	}
 }

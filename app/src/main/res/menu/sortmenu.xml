@@ -15,7 +15,7 @@
 
             <item
                 android:id="@+id/sortByTopRatings"
-                android:title="@string/ratings"
+                android:title="@string/highest_rated"
                 app:showAsAction="ifRoom" />
         </menu>
 
