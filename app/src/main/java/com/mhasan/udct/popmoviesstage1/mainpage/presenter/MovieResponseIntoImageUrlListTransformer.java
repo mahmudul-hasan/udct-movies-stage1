@@ -1,13 +1,15 @@
-package com.mhasan.udct.popmoviesstage1.utils;
+package com.mhasan.udct.popmoviesstage1.mainpage.presenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.mhasan.udct.popmoviesstage1.model.MovieResponse;
+import com.mhasan.udct.popmoviesstage1.utils.ImageUrlFactory;
+import com.mhasan.udct.popmoviesstage1.utils.Transformer;
 
 import androidx.annotation.NonNull;
 
-public class DeriveImageUrlListFromMovieResponse implements Transformer<MovieResponse, List<String>> {
+public class MovieResponseIntoImageUrlListTransformer implements Transformer<MovieResponse, List<String>> {
 
 	@NonNull
 	@Override

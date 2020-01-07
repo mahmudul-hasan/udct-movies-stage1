@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mhasan.udct.popmoviesstage1.model.MovieResponse;
-import com.mhasan.udct.popmoviesstage1.utils.DeriveImageUrlListFromMovieResponse;
 import com.mhasan.udct.popmoviesstage1.utils.MovieServiceInterface;
 import com.mhasan.udct.popmoviesstage1.utils.UrlUtils;
 
@@ -19,12 +18,18 @@ public class MainPagePresenter implements MainPageContract.Presenter {
 
 	private List<String> imageUrlList = new ArrayList<>();
 	private MovieResponse movieResponse;
-	private String sortCategory = UrlUtils.CATEGORY_POPULAR;
+	private String sortCategory;
 	private MainPageContract.View view;
 
-	public MainPagePresenter(MainPageContract.View view) {
+	public MainPagePresenter(MainPageContract.View view, @NonNull String initialCategory) {
+		sortCategory = initialCategory;
 		this.view = view;
-		loadMovies();
+		sortMoviesBy(sortCategory);
+	}
+
+	@Override
+	public String getCurrentSortCategory() {
+		return sortCategory;
 	}
 
 	@Override
@@ -50,7 +55,7 @@ public class MainPagePresenter implements MainPageContract.Presenter {
 			@Override
 			public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
 				movieResponse = response.body();
-				imageUrlList = new DeriveImageUrlListFromMovieResponse().transform(movieResponse);
+				imageUrlList = new MovieResponseIntoImageUrlListTransformer().transform(movieResponse);
 				initializeView();
 			}
 		});
