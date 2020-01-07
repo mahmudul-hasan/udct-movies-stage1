@@ -10,6 +10,8 @@ public interface MainPageContract {
 
 	interface Presenter {
 
+		String getCurrentSortCategory();
+
 		void initializeView();
 
 		void loadMovies();
