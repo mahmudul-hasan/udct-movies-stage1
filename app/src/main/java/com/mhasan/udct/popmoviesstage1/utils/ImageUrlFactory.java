@@ -4,6 +4,11 @@ import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
+/**
+ * This factory class creates an image url based on the endpoint, size and image uri value.
+ *
+ * @author Mahmudul Hasan.
+ */
 public class ImageUrlFactory implements UtilsFactory<String> {
 
 	public static final String BASE_IMAGE_URL = "http://image.tmdb.org/t/p/";

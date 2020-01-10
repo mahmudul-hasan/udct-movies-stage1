@@ -9,6 +9,11 @@ import com.mhasan.udct.popmoviesstage1.utils.Transformer;
 
 import static com.mhasan.udct.popmoviesstage1.mainpage.view.MovieGridViewAdapter.DATA_RETRIEVAL_KEY;
 
+/**
+ * This is a transformer class that retrieves the selected movie from the give intent.
+ *
+ * @author Mahmudul Hasan.
+ */
 public class RetrieveSelectedMovieFromIntent implements Transformer<Intent, MovieResponse.ResultsBean> {
 
 	@Override

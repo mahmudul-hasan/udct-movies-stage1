@@ -7,6 +7,11 @@ import com.mhasan.udct.popmoviesstage1.R;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * This is the ViewHolder class used in the MovieGridViewAdapter.
+ *
+ * @author Mahmudul Hasan.
+ */
 public class MovieGridViewHolder extends RecyclerView.ViewHolder {
 
 	private ImageView imageView;

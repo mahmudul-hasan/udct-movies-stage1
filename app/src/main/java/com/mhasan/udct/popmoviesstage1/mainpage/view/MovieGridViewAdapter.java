@@ -18,6 +18,11 @@ import com.squareup.picasso.Picasso;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
+/**
+ * This is the adapter that sets the movies into the Grid view way on the main page.
+ *
+ * @author Mahmudul Hasan.
+ */
 public class MovieGridViewAdapter extends Adapter<MovieGridViewHolder> {
 
 	public static final String DATA_RETRIEVAL_KEY = "dataRetrievalKey";
