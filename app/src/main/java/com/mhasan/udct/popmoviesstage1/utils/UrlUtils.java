@@ -1,5 +1,10 @@
 package com.mhasan.udct.popmoviesstage1.utils;
 
+/**
+ * This is the utility class for the Urls.
+ *
+ * @author Mahmudul Hasan.
+ */
 public class UrlUtils {
 
 	private static final String API_KEY = "0d7c8800a4c55306acf3e3a63415882e";

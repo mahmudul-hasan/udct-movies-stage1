@@ -7,6 +7,11 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
+/**
+ * This is the servicecall interface to fetch the movies using Retrofit.
+ *
+ * @author Mahmudul Hasan.
+ */
 public interface MovieServiceInterface {
 
 	@GET("/3/movie/{sortByCategory}")

@@ -6,6 +6,11 @@ import com.mhasan.udct.popmoviesstage1.model.MovieResponse;
 
 import androidx.annotation.NonNull;
 
+/**
+ * This is the view-presenter contract for the main page.
+ *
+ * @author Mahmudul Hasan.
+ */
 public interface MainPageContract {
 
 	interface Presenter {

@@ -4,6 +4,12 @@ import com.mhasan.udct.popmoviesstage1.R;
 import com.mhasan.udct.popmoviesstage1.utils.Transformer;
 import com.mhasan.udct.popmoviesstage1.utils.UrlUtils;
 
+/**
+ * This class determines the sort menu title to be appended with the "Sorted By" based on the selected sort
+ * category.
+ *
+ * @author Mahmudul Hasan.
+ */
 public class SortMenuTitleDeterminerBasedOnCategory implements Transformer<String, Integer> {
 
 	@Override

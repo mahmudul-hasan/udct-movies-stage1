@@ -4,6 +4,11 @@ import android.content.Intent;
 
 import com.mhasan.udct.popmoviesstage1.model.MovieResponse.ResultsBean;
 
+/**
+ * This is the view-presenter contract for the details page.
+ *
+ * @author Mahmudul Hasan.
+ */
 public interface DetailsPageContract {
 
 	interface Presenter {

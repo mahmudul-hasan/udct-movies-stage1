@@ -9,6 +9,11 @@ import com.mhasan.udct.popmoviesstage1.utils.Transformer;
 
 import androidx.annotation.NonNull;
 
+/**
+ * This transformer class transforms a MovieResponse object into ImageUrlList ogject.
+ *
+ * @author Mahmudul Hasan.
+ */
 public class MovieResponseIntoImageUrlListTransformer implements Transformer<MovieResponse, List<String>> {
 
 	@NonNull

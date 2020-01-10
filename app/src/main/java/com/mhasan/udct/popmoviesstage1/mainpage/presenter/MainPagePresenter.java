@@ -14,6 +14,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * This is the presenter class for the main page.
+ *
+ * @author Mahmudul Hasan.
+ */
 public class MainPagePresenter implements MainPageContract.Presenter {
 
 	private List<String> imageUrlList = new ArrayList<>();

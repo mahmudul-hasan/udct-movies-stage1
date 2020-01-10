@@ -6,6 +6,11 @@ import com.mhasan.udct.popmoviesstage1.detailspage.presenter.DetailsPageContract
 import com.mhasan.udct.popmoviesstage1.detailspage.view.RetrieveSelectedMovieFromIntent;
 import com.mhasan.udct.popmoviesstage1.model.MovieResponse.ResultsBean;
 
+/**
+ * This is the details view presenter class.
+ *
+ * @author Mahmudul Hasan.
+ */
 public class DetailsPagePresenter implements DetailsPageContract.Presenter {
 
 	private final DetailsPageContract.View view;

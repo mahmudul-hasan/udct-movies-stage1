@@ -56,23 +56,14 @@ public class MainActivity extends AppCompatActivity implements MainPageContract.
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case R.id.sortByPopularity:
-				mainPagePresenter.sortMoviesBy(UrlUtils.CATEGORY_POPULAR);
-				break;
-			case R.id.sortByTopRatings:
-				mainPagePresenter.sortMoviesBy(UrlUtils.CATEGORY_TOP_RATED);
-				break;
-		}
+		new SortMovies(mainPagePresenter).execute(item);
 		updateMenuTitle(String.valueOf(item.getTitle()));
 		return super.onOptionsItemSelected(item);
 	}
 
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
-		MenuItem item = menu.findItem(R.id.sortMenu);
-		String title = getString(R.string.sort_movies) + ": \n" + getMenuClicked();
-		item.setTitle(title);
+		new SortMenuItemTitleModifier(getString(R.string.sort_movies) + ": \n" + getMenuClicked()).modify(menu);
 		return super.onPrepareOptionsMenu(menu);
 	}
 
