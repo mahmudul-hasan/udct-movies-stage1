@@ -7,7 +7,7 @@ package com.mhasan.udct.popmoviesstage1.utils;
  */
 public class UrlUtils {
 
-	private static final String API_KEY = "0d7c8800a4c55306acf3e3a63415882e";
+	private static final String API_KEY = "<PUT YOUR API KEY>";
 
 	public static final String BASE_URL = "https://api.themoviedb.org";
 	public static final String CATEGORY_POPULAR = "popular";
