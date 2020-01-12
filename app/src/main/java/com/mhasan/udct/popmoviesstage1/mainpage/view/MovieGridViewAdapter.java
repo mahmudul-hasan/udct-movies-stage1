@@ -44,7 +44,7 @@ public class MovieGridViewAdapter extends Adapter<MovieGridViewHolder> {
 	@Override
 	public void onBindViewHolder(@NonNull MovieGridViewHolder holder, final int position) {
 		String imagePath = imageList.get(position);
-		Picasso.get().load(imagePath).resize(185, 277).centerCrop().into(holder.getImageView());
+		Picasso.get().load(imagePath).into(holder.getImageView());
 		holder.getImageView().setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
